@@ -51,7 +51,7 @@ if __name__ == '__main__':
 		rotaryVal = grovepi.analogRead(potentiometer)
 		grove_rgb_lcd.setText_norefresh(str(ultrasonicVal)+" cm\n"+rotaryVal+" cm")
 		if ultrasonicVal <= rotaryVal :
-			grove_rgb_lcd.setText_norefresh(str(ultrasonicVal)+" cm OBJ PRES\n"+rotaryVal+" cm")
+			grove_rgb_lcd.setText_norefresh(str(ultrasonicVal)+" cm OBJ PRES\n"+str(rotaryVal)+" cm")
 			grove_rgb_lcd.setrgb(255,0,0)
 	except TypeError as e :
 		print(str(e))
