@@ -49,7 +49,7 @@ if __name__ == '__main__':
 		#print(grovepi.ultrasonicRead(PORT))
 		ultrasonicVal = grovepi.ultrasonicRead(PORT)
 		rotaryVal = grovepi.analogRead(potentiometer)
-		grove_rgb_lcd.setText_norefresh(str(ultrasonicVal)+" cm\n"+rotaryVal+" cm")
+		grove_rgb_lcd.setText_norefresh(str(ultrasonicVal)+" cm\n"+str(rotaryVal)+" cm")
 		if ultrasonicVal <= rotaryVal :
 			grove_rgb_lcd.setText_norefresh(str(ultrasonicVal)+" cm OBJ PRES\n"+str(rotaryVal)+" cm")
 			grove_rgb_lcd.setrgb(255,0,0)
