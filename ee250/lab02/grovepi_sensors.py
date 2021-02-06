@@ -42,5 +42,5 @@ if __name__ == '__main__':
 
         print(grovepi.ultrasonicRead(PORT))
 	ultrasonicVal = grovepi.ultrasonicRead(PORT)
-	str(ultrasonicVal)
-	setText_noRefresh(ultrasonicVal" cm")
+	
+	setText_noRefresh(str(ultrasonicVal)+" cm")
