@@ -26,15 +26,19 @@ import grovepi
 import grove_rgb_lcd
 # variable declarations
 potentiometer = 0
+grovepi.pinMode(potentiometer,"INPUT")
+adc_ref = 5
+grove_vcc = 5
+full_angle = 300
 led = 5
 DISPLAY_RGB_ADDR = 0x62
 DISPLAY_TEXT_ADDR = 0x3e
+PORT = 4    # D4
 
 """This if-statement checks if you are running this python file directly. That 
 is, if you run `python3 grovepi_sensors.py` in terminal, this if-statement will 
 be true"""
 if __name__ == '__main__':
-    PORT = 4    # D4
 
     while True:
 	try:
@@ -42,10 +46,13 @@ if __name__ == '__main__':
 		#sleep for a reasonable time of 200ms between each iteration.
 		time.sleep(0.2)
 
-		print(grovepi.ultrasonicRead(PORT))
+		#print(grovepi.ultrasonicRead(PORT))
 		ultrasonicVal = grovepi.ultrasonicRead(PORT)
-		
-		grove_rgb_lcd.setText_norefresh(str(ultrasonicVal)+" cm")
+		rotaryVal = grovepi.analogRead(potentiometer)
+		grove_rgb_lcd.setText_norefresh(str(ultrasonicVal)+" cm\n"+rotaryVal+" cm")
+		if ultrasonicVal <= rotaryVal :
+		grove_rgb_lcd.setText_norefresh(str(ultrasonicVal)+" cm OBJ PRES\n"+rotaryVal+" cm")
+		grove_rgb_lcd.setrgb(255,0,0)
 	except TypeError as e :
 		print(str(e))
 	except KeyboardInterrupt as e :
