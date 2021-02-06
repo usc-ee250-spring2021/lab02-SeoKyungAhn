@@ -53,6 +53,9 @@ if __name__ == '__main__':
 		if ultrasonicVal <= rotaryVal :
 			grove_rgb_lcd.setText_norefresh(str(ultrasonicVal)+" cm OBJ PRES\n"+str(rotaryVal)+" cm")
 			grove_rgb_lcd.setRGB(255,0,0)
+		else if ultrasonicVal >= rotaryVal:
+			grove_rgb_lcd.setText_norefresh(str(ultrasonicVal)+" cm\n"+str(rotaryVal)+" cm")
+			grove_rgb_lcd.setRGB(0,255,0)
 	except TypeError as e :
 		print(str(e))
 	except KeyboardInterrupt as e :
