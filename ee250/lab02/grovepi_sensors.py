@@ -23,6 +23,7 @@ sys.path.append('../../Software/Python/')
 sys.path.append('../../Software/Python/grove_rgb_lcd')
 
 import grovepi
+import grove_rgb_lcd
 # variable declarations
 potentiometer = 0
 led = 5
@@ -36,11 +37,30 @@ if __name__ == '__main__':
     PORT = 4    # D4
 
     while True:
-        #So we do not poll the sensors too quickly which may introduce noise,
-        #sleep for a reasonable time of 200ms between each iteration.
-        time.sleep(0.2)
+	try:
+		#So we do not poll the sensors too quickly which may introduce noise,
+		#sleep for a reasonable time of 200ms between each iteration.
+		time.sleep(0.2)
 
-        print(grovepi.ultrasonicRead(PORT))
-	ultrasonicVal = grovepi.ultrasonicRead(PORT)
+		print(grovepi.ultrasonicRead(PORT))
+		ultrasonicVal = grovepi.ultrasonicRead(PORT)
+		
+		grove_rgb_lcd.setText_norefresh(str(ultrasonicVal)+" cm")
+	except TypeError as e :
+		print(str(e))
+	except KeyboardInterrupt as e :
+		print(str(e))
+		break
+
+
+
+
+
+
+
+
 	
-	setText_noRefresh(str(ultrasonicVal)+" cm")
+
+
+
+
