@@ -1,7 +1,7 @@
 """ EE 250L Lab 02: GrovePi Sensors
 
 List team members here.
-
+Seo Kyung (Brian) Ahn
 Insert Github repository link here.
 """
 
@@ -23,6 +23,11 @@ sys.path.append('../../Software/Python/')
 sys.path.append('../../Software/Python/grove_rgb_lcd')
 
 import grovepi
+# variable declarations
+potentiometer = 0
+led = 5
+DISPLAY_RGB_ADDR = 0x62
+DISPLAY_TEXT_ADDR = 0x3e
 
 """This if-statement checks if you are running this python file directly. That 
 is, if you run `python3 grovepi_sensors.py` in terminal, this if-statement will 
@@ -36,3 +41,6 @@ if __name__ == '__main__':
         time.sleep(0.2)
 
         print(grovepi.ultrasonicRead(PORT))
+	ultrasonicVal = grovepi.ultrasonicRead(PORT))
+	str(ultrasonicVal)
+	setText_noRefresh(ultrasonicVal" cm")
